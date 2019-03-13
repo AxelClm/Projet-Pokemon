@@ -16,7 +16,7 @@
 		if (mysqli_num_rows($res) > 0) {
 			$_SESSION['message'] = "Pseudo déjà existant";
 		}
-		else if (preg_match('/\s/',$username)) {
+		else if (!ctype_alnum($username)) {
 			$_SESSION['message'] = "Pseudo non acceptable";
 		}
 		else {

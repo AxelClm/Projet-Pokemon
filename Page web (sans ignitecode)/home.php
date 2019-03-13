@@ -12,6 +12,7 @@
 		<meta charset="utf-8">
 		<title>home.php</title>
 		<link rel="stylesheet" type="text/css" href="css/home.css">
+		<link rel="icon" href="icon.ico" />
 	</head>
 	<body>
 		<p>Welcome <?php echo $_SESSION['username']; ?></p>

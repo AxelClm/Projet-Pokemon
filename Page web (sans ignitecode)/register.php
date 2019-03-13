@@ -49,6 +49,7 @@
 		<meta charset="utf-8">
 		<title>register.php</title>
 		<link rel="stylesheet" type="text/css" href="css/register.css">
+		<link rel="icon" href="icon.ico" />
 	</head>
 	<body>
 		<?php 

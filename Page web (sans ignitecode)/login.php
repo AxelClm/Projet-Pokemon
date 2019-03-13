@@ -56,6 +56,7 @@ CREATE TABLE users (
 		<meta charset="utf-8">
 		<title>login.php</title>
 		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<link rel="icon" href="icon.ico" />
 	</head>
 	<body>
 		<?php 

@@ -1,19 +1,13 @@
-<?php 
+<?php
 	session_start();
-
 	if (!isset($_SESSION['login'])) {
 		header("location: login.php");
 	}
-
-	function creer_un_pokemon($num_dresseur, $num_pokemon) {
-		$db = mysqli_connect('https://dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
-		$query = "INSERT INTO Pokemon_des_dresseurs(Num_dresseur, Num_pokemon, IV_PV, IV_Attaque, IV_Defense, IV_Attaque_Spe, IV_Defense_Spe, IV_Vitesse) VALUES(".$num_dresseur.", ".$num_pokemon.", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).")";
-
-		mysqli_query($db, $query);
-		mysqli_close($db);
+	include 'fonctions.php';
+	//redirection vers la page de selection des starters si besoin
+	if(besoin_de_starter($_SESSION['num_user']) == 1){
+		header("location: starter_selection.php");
 	}
-
-	creer_un_pokemon(2, 1);
 
 ?>
 
@@ -27,12 +21,12 @@
 	</head>
 	<body>
 		<p>Welcome <?php echo $_SESSION['username']; ?></p>
-		<?php 
+		<?php
 			if (isset($_SESSION['message'])) {
 				echo "<div id='error'>".$_SESSION['message']."</div>";
 				unset($_SESSION['message']);
 			}
 		?>
 		<p><a href="logout.php">Log out</a></p>
-	</body> 
+	</body>
 </html>

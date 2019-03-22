@@ -1,12 +1,14 @@
 <?php
 	session_start();
-	if (!isset($_SESSION['login'])) {
+	if(!isset($_SESSION['num_user']) || !isset($_SESSION['login'])) {
 		header("location: login.php");
+		exit();
 	}
 	include 'fonctions.php';
 	//redirection vers la page de selection des starters si besoin
 	if(besoin_de_starter($_SESSION['num_user']) == 1){
 		header("location: starter_selection.php");
+		exit();
 	}
 
 ?>
@@ -27,6 +29,6 @@
 				unset($_SESSION['message']);
 			}
 		?>
-		<p><a href="logout.php">Log out</a></p>
+		<p><a href="redirection.php?disconnect=true">Log out</a></p>
 	</body>
 </html>

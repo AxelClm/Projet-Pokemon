@@ -5,6 +5,12 @@
     mysqli_query($db, $query);
 		mysqli_close($db);
 	}
+  function starter_set($num_dresseur){
+    $db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+    $query = "UPDATE users SET starter = 1 WHERE id =".$num_dresseur.";";
+    mysqli_query($db, $query);
+		mysqli_close($db);
+  }
 
   function besoin_de_starter($num_dresseur){
     $db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');

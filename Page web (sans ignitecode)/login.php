@@ -1,22 +1,9 @@
-<!--
-
-Avant toute chose tu dois créer ça :
-La table users qui contient l'ID (clé primaire, auto-incrémentée), le pseudo et le mot de passe (cryptée)
-
-CREATE TABLE users (
-	id INT NOT NULL,
-	username VARCHAR(100) NOT NULL,
-	password VARCHAR(100) NOT NULL,
-	PRIMARY KEY (id)
-);
-
--->
-
 <?php
 	session_start();
 
 	if (isset($_SESSION['login'])) {
 		header("location: home.php");
+		exit();
 	}
 
 	/*

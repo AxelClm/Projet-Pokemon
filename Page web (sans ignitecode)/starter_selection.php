@@ -1,5 +1,10 @@
 <?php
 session_start();
+include 'fonctions.php';
+if(!besoin_de_starter($_SESSION['num_user'])){
+  header("location: home.php");
+  exit();
+}
  ?>
 <!DOCTYPE html>
 <html lang="fr">

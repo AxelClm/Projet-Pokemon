@@ -3,6 +3,7 @@
 
 	if (isset($_SESSION['login'])) {
 		header("location: home.php");
+		exit();
 	}
 
 	$db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');

@@ -1,13 +1,20 @@
 <?php
 	session_start();
 	if(!isset($_SESSION['num_user']) || !isset($_SESSION['login'])) {
-		header("location: login.php");
+		header("location: redirection.php?disconnect=true");
 		exit();
 	}
 	include 'fonctions.php';
+	//Mise a jour de la derniere connection
+	is_connected($_SESSION['num_user']);
 	//redirection vers la page de selection des starters si besoin
 	if(besoin_de_starter($_SESSION['num_user']) == 1){
 		header("location: starter_selection.php");
+		exit();
+	}
+	//redirection vers la page des recompenses
+	if(need_reward($_SESSION['num_user'])){
+		header("location: reward.php");
 		exit();
 	}
 

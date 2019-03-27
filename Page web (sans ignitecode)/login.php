@@ -32,6 +32,7 @@
 			$_SESSION['message'] = "Connecté";
 			$_SESSION['username'] = $username;
 			header("location: home.php");
+			exit();
 		} else {
 			$_SESSION['message'] = "Invalide";
 		}

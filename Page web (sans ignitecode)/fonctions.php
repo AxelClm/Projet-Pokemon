@@ -1,7 +1,7 @@
 <?php
-  function creer_un_pokemon($num_dresseur, $num_pokemon) {
+  function creer_un_pokemon($num_dresseur, $num_pokemon ,$level,$equipe) {
     $db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
-    $query = "INSERT INTO Pokemon_des_dresseurs(Num_dresseur, Num_pokemon, IV_PV, IV_Attaque, IV_Defense, IV_Attaque_Spe, IV_Defense_Spe, IV_Vitesse) VALUES(".$num_dresseur.", ".$num_pokemon.", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).")";
+    $query = "INSERT INTO Pokemon_des_dresseurs(Num_dresseur, Num_pokemon, IV_PV, IV_Attaque, IV_Defense, IV_Attaque_Spe, IV_Defense_Spe, IV_Vitesse, Niveau, Equipe) VALUES(".$num_dresseur.", ".$num_pokemon.", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".$level.", ".$equipe.")";
     mysqli_query($db, $query);
 		mysqli_close($db);
 	}
@@ -88,5 +88,12 @@
       $query = "UPDATE users SET last_reward =".time()." WHERE id=".$num_dresseur.";";
       mysqli_query($db,$query);
       mysqli_close($db);
+    }
+    function get_online(){
+      $db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
+      $query = "SELECT username ,last_connect FROM users" ;
+      $res = mysqli_query($db,$query);
+      mysqli_close($db);
+      return $res;
     }
   ?>

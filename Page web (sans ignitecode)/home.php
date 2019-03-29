@@ -30,12 +30,40 @@
 	</head>
 	<body>
 		<p>Welcome <?php echo $_SESSION['username']; ?></p>
-		<?php
-			if (isset($_SESSION['message'])) {
-				echo "<div id='error'>".$_SESSION['message']."</div>";
-				unset($_SESSION['message']);
-			}
-		?>
+		<div class="friends">
+			<h6>Amis</h6>
+			<div class="online_friends">
+			</div>
+			<div class="offline_friends">
+			</div>
+		</div>
 		<p><a href="redirection.php?disconnect=true">Log out</a></p>
 	</body>
 </html>
+<script>
+function friends(){
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', 'redirection.php?friends=true', true);
+	xhr.addEventListener('readystatechange', function() {
+		if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+				var tab = JSON.parse(xhr.responseText);
+				var time_actuel = Date.now()/1000;
+				var text_online="";
+				var text_offline="";
+				for (var i=0 ; i<tab.length;i++){
+					if( time_actuel - tab[i]['last_connect'] < 15){
+						text_online = text_online + "<div><p>"+tab[i]['username'] +"<p>En ligne</p></div>";
+					}
+					else {
+						text_offline = text_offline + "<div><p>"+tab[i]['username'] +"<p>Hors ligne</p></div>";
+					}
+				}
+					document.querySelector(".online_friends").innerHTML = text_online;
+					document.querySelector(".offline_friends").innerHTML = text_offline;
+				}
+		});
+		xhr.send();
+}
+	friends();
+	setInterval(friends,"10000");
+</script>

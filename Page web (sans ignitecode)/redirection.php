@@ -31,11 +31,32 @@ if(isset($_GET['disconnect'])){
   exit();
 }
 if(isset($_GET['friends'])){
-  $res = get_online();
-  $rows = array();
-  while($r = mysqli_fetch_assoc($res)){
-      $rows[] = $r;
+  //is_connected($_SESSION['num_user']);
+  if($_GET['friends']=="demande_r"){
+    is_connected($_SESSION['num_user']);
+    $res=get_demande_amis_reçus($_SESSION['num_user']);
+    $rows =array();
+    while($r = mysqli_fetch_assoc($res)){
+        $rows[] = $r;
+    }
+    echo json_encode($rows);
+    exit();
   }
-  echo json_encode($rows);
+  if($_GET['friends']=="friend_list"){
+    $res = get_friends_list($_SESSION['num_user']);
+    $row = array();
+    while($r = mysqli_fetch_assoc($res)){
+        $rows[] = $r;
+    }
+    echo json_encode($rows);
+    exit();
+  }
+}
+
+if(isset($_GET['accepter_demande_r'])){
+  accepter_demande_amis($_SESSION["num_user"],$_GET['accepter_demande_r']);
+}
+if(isset($_GET['refuser_demande_r'])){
+  refuser_demande_amis($_SESSION["num_user"],$_GET['refuser_demande_r']);
 }
 ?>

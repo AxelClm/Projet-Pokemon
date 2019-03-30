@@ -89,10 +89,63 @@
       mysqli_query($db,$query);
       mysqli_close($db);
     }
-    function get_online(){
+    function get_demande_amis_reçus($id){
       $db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
-      $query = "SELECT username ,last_connect FROM users" ;
+      $query = "SELECT users.id,users.username  FROM `friends`,users WHERE friends.friend = users.id and accepte is null and friends.user=".$id.";";
       $res = mysqli_query($db,$query);
+      mysqli_close($db);
+      return $res;
+    }
+    function is_friend_relation($user,$friend){
+      $db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
+      $query = "SELECT * FROM `friends` WHERE user=".$user." and friend=".$friend.";";
+      $res = mysqli_query($db,$query);
+      mysqli_close($db);
+      if (mysqli_num_rows($res) == 1){
+        return 1;
+      }
+      return 0;
+    }
+    function add_friends($user,$friend){
+      $db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
+      $query ="INSERT INTO friends (user,friend) VALUES ($user,$friend)";
+      mysqli_query($db,$query);
+      mysqli_close($db);
+    }
+    function update_friends($user,$friend,$value){
+      $db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
+      $query = "UPDATE friends SET accepte = ".$value." WHERE user=".$user." and friend=".$friend.";";
+      mysqli_query($db,$query);
+      mysqli_close($db);
+    }
+    function accepter_demande_amis($user,$friend){
+      if(is_friend_relation($user,$friend)){
+        update_friends($user,$friend,1);
+      }
+      if(is_friend_relation($friend,$user)){
+        update_friends($friend,$user,1);
+      }
+      else{
+        add_friends($friend,$user);
+        update_friends($friend,$user,1);
+      }
+    }
+    function refuser_demande_amis($user,$friend){
+      if(is_friend_relation($user,$friend)){
+        update_friends($user,$friend,0);
+      }
+      if(is_friend_relation($friend,$user)){
+        update_friends($friend,$user,0);
+      }
+      else{
+        add_friends($friend,$user);
+        update_friends($friend,$user,0);
+      }
+    }
+    function get_friends_list($user){
+      $db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
+      $query = "SELECT users.id,users.username,users.last_connect FROM friends,users WHERE friends.accepte = 1 and friends.user = $user and friends.friend = users.id;";
+      $res =  mysqli_query($db,$query);
       mysqli_close($db);
       return $res;
     }

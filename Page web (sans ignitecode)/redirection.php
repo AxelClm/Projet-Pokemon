@@ -44,7 +44,7 @@ if(isset($_GET['friends'])){
   }
   if($_GET['friends']=="friend_list"){
     $res = get_friends_list($_SESSION['num_user']);
-    $row = array();
+    $rows = array();
     while($r = mysqli_fetch_assoc($res)){
         $rows[] = $r;
     }
@@ -58,5 +58,17 @@ if(isset($_GET['accepter_demande_r'])){
 }
 if(isset($_GET['refuser_demande_r'])){
   refuser_demande_amis($_SESSION["num_user"],$_GET['refuser_demande_r']);
+}
+if(isset($_GET['get_users_list'])){
+  $res = get_users_list($_SESSION["num_user"],$_SESSION["username"],$_GET['get_users_list']);
+  $rows = array();
+  while($r = mysqli_fetch_assoc($res)){
+      $rows[] = $r;
+  }
+  echo json_encode($rows);
+  exit();
+}
+if (isset($_GET['add_friend'])){
+  add_friends($_GET['add_friend'],$_SESSION['num_user']);
 }
 ?>

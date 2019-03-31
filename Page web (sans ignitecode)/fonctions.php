@@ -149,4 +149,11 @@
       mysqli_close($db);
       return $res;
     }
+    function get_users_list($num_user,$username,$shema){
+      $db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
+      $query = "SELECT username,id FROM users WHERE username LIKE '$shema' AND username != '$username' AND username NOT IN( SELECT username FROM users, friends WHERE friends.user = $num_user AND friends.friend = users.id ) AND username NOT IN( SELECT username FROM users, friends WHERE friends.friend = $num_user AND friends.user = users.id )LIMIT 10";
+      $res =  mysqli_query($db,$query);
+      mysqli_close($db);
+      return $res;
+    }
   ?>

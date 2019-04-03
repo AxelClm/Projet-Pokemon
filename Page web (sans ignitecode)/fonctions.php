@@ -1,15 +1,45 @@
 <?php
-  function creer_un_pokemon($num_dresseur, $num_pokemon ,$level,$equipe) {
+  function creer_un_pokemon($num_pokemon ,$level){
     $db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
-    $query = "INSERT INTO Pokemon_des_dresseurs(Num_dresseur, Num_pokemon, IV_PV, IV_Attaque, IV_Defense, IV_Attaque_Spe, IV_Defense_Spe, IV_Vitesse, Niveau, Equipe) VALUES(".$num_dresseur.", ".$num_pokemon.", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".$level.", ".$equipe.")";
-    mysqli_query($db, $query);
-		mysqli_close($db);
+    $query = "INSERT INTO Pokemon_des_dresseurs(Num_pokemon, IV_PV, IV_Attaque, IV_Defense, IV_Attaque_Spe, IV_Defense_Spe, IV_Vitesse, Niveau) VALUES($num_pokemon,".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".rand(0,31).", ".$level.");";
+    mysqli_query($db,$query);
+    $a = mysqli_insert_id($db);
+    mysqli_close($db);
+    return $a;
 	}
+  function add_pokemon_dresseur($id_pokemon,$num_dresseur){
+  	$db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+    $query = "UPDATE Pokemon_des_dresseurs SET Num_dresseur = $num_dresseur WHERE Id_pokemon = $id_pokemon";
+    mysqli_query($db,$query);
+    mysqli_close($db);
+  }
+  function ajouter_equipe_suite($id_pokemon,$num_dresseur){
+  	$db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+  	$last = get_equipe($num_dresseur) + 1;
+  	if($last <= 6) {
+	  	$query = "UPDATE Pokemon_des_dresseurs SET equipe = 1 , Place_dans_equipe = $last WHERE Id_pokemon = $id_pokemon";
+	    mysqli_query($db, $query);
+	    mysqli_close($db);
+	}
+  }
+  function create_starter($num_pokemon,$num_dresseur,$level){
+  	$poke = creer_un_pokemon($num_pokemon,$level);
+  	add_pokemon_dresseur($poke,$num_dresseur);
+  	ajouter_equipe_suite($poke,$num_dresseur);
+  	starter_set($num_dresseur);
+  }
+  function get_equipe($num_dresseur){
+  	$db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+    $query = "SELECT Id_pokemon FROM Pokemon_des_dresseurs WHERE Num_dresseur = $num_dresseur AND Equipe = 1";
+    $result = mysqli_query($db, $query);
+    $re = mysqli_num_rows($result);
+    return $re;
+  }
   function starter_set($num_dresseur){
     $db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
     $query = "UPDATE users SET starter = 1 WHERE id =".$num_dresseur.";";
     mysqli_query($db, $query);
-		mysqli_close($db);
+	mysqli_close($db);
   }
 
   function besoin_de_starter($num_dresseur){
@@ -17,7 +47,7 @@
     $query = "SELECT starter FROM users WHERE id=".$num_dresseur.";";
     $a = mysqli_query($db, $query);
     foreach($a as $enr){
-  		$res =  $enr['starter'];
+  		$res = $enr['starter'];
     }
     mysqli_close($db);
     if($res == 0){

@@ -5,12 +5,10 @@ include("fonctions.php");
 
 if(isset($_GET['starter'])){
   if(besoin_de_starter($_SESSION['num_user']) == 1){
-    //if($_https://***REMOVED***/~***REMOVED***/Projet-Pokemon/Page%20web%20(sans%20ignitecode)/login.phpGET['starter'] == 1 || $_GET['starter'] == 2 || $_GET['starter'] == 3 )
-    creer_un_pokemon($_SESSION['num_user'],$_GET['starter'],1,1);
-    starter_set($_SESSION['num_user']);
+    create_starter($_GET['starter'],$_SESSION['num_user'],1);
   }
   header("location: home.php");
-  exit();
+
 }
 
 

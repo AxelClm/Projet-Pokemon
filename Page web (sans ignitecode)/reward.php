@@ -20,10 +20,10 @@ else{
  <html lang="fr">
    <head>
      <meta charset="utf-8">
-     <title>reward</title>
+     <title>Pokemon - Reward</title>
    </head>
    <body>
-     Vous avez obtenus 50 Pokedollard et 5 Pokeball !
+     Vous avez obtenu 50 Pokedollar et 5 Pokeball.
      <br>
      <a href="home.php">Continuer</a>
    </body>

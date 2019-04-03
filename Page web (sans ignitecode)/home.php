@@ -109,19 +109,19 @@ function update_friends_div(){
 																													 time_deconnecter = time_actuel - tab[i]['last_connect'];
 																													 if((time_actuel - tab[i]['last_connect']) > 86400){
 																														 console.log('jour');
-																														 time_deconnecter = parseInt(time_deconnecter/86400) + ' Jour(s)';
+																														 time_deconnecter = parseInt(time_deconnecter/86400) + ' jour(s)';
 																													 }
 																													 if((time_actuel - tab[i]['last_connect']) > 3600 && (time_actuel - tab[i]['last_connect']) < 86400 ){
 																														 console.log('heures');
-																														 time_deconnecter = parseInt(time_deconnecter/3600) + ' Heure(s)';
+																														 time_deconnecter = parseInt(time_deconnecter/3600) + ' heure(s)';
 																													 }
 																													 else{
 																														 console.log('minutes');
-																														 time_deconnecter = parseInt(time_deconnecter/60) + ' Minutes(s)';
+																														 time_deconnecter = parseInt(time_deconnecter/60) + ' minutes(s)';
 																													 }
 
 
-																													 text_offline = text_offline  + "<div>"+"<p>"+tab[i]["username"]+"</p>"+"<p>Hors Ligne depuis "+ time_deconnecter+"</p>"+"</div>";
+																													 text_offline = text_offline  + "<div>"+"<p>"+tab[i]["username"]+"</p>"+"<p>Hors-ligne depuis "+ time_deconnecter+"</p>"+"</div>";
 																												 }
 																											 }
 																											 document.querySelector(".online_friends").innerHTML = text_online;

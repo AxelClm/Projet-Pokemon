@@ -36,6 +36,7 @@
 				$_SESSION['num_user'] = mysqli_insert_id();
 				
 				header("location: home.php");
+				exit();
 			}
 			else {
 				$_SESSION['message'] = "Mots de passe non identiques";

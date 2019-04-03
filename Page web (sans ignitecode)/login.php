@@ -6,12 +6,6 @@
 		exit();
 	}
 
-	/*
-	 *
-	 *	Modifie en fonction de ta base de données les valeurs en dessous : mysqli_connect('dwarves', 'clementa', ...)
-	 *
-	 */
-
 	$db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
 
 	if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
@@ -25,12 +19,14 @@
 		$result = mysqli_query($db, $query);
 
 		if (mysqli_num_rows($result) == 1) {
-			foreach($result as $enr){
-	  		 $_SESSION['num_user'] = $enr['id'];
-	    }
+			foreach($result as $enr) {
+	  			$_SESSION['num_user'] = $enr['id'];
+	    		}
+			
 			$_SESSION['login'] = $_POST['pseudo'];
 			$_SESSION['message'] = "Connecté";
 			$_SESSION['username'] = $username;
+			
 			header("location: home.php");
 			exit();
 		} else {
@@ -45,7 +41,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>login.php</title>
+		<title>Pokemon - Connexion</title>
 		<link rel="stylesheet" type="text/css" href="css/login.css">
 		<link rel="icon" href="icon.ico" />
 	</head>

@@ -5,7 +5,7 @@ session_start();
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title>Ajouter un amis</title>
+    <title>Ajouter un ami</title>
   </head>
   <body>
     <div class="add_friend">

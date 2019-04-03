@@ -33,7 +33,13 @@
 				$_SESSION['login'] = $username;
 				$_SESSION['message'] = "Connecté";
 				$_SESSION['username'] = $username;
-				$_SESSION['num_user'] = mysqli_insert_id();
+				
+				$query = "SELECT id FROM users WHERE username='$username'";
+				$result = mysqli_query($db, $query);
+				if (mysqli_num_rows($result) == 1) {
+					foreach($result as $enr)
+	  		 			$_SESSION['num_user'] = $enr['id'];
+				}
 				
 				header("location: home.php");
 				exit();
@@ -51,7 +57,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>register.php</title>
+		<title>Pokemon - Inscription</title>
 		<link rel="stylesheet" type="text/css" href="css/register.css">
 		<link rel="icon" href="icon.ico" />
 	</head>

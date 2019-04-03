@@ -10,11 +10,11 @@ if(!besoin_de_starter($_SESSION['num_user'])){
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Pokemon - Starter</title>
   </head>
   <body>
     <a href="redirection.php?starter=1">Bulbizarre</a>
-    <a href="redirection.php?starter=2">Salaméche</a>
+    <a href="redirection.php?starter=2">Salamèche</a>
     <a href="redirection.php?starter=3">Carapuce</a>
   </body>
 </html>

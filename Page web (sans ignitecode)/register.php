@@ -36,9 +36,11 @@
 				
 				$query = "SELECT id FROM users WHERE username='$username'";
 				$result = mysqli_query($db, $query);
+				
 				if (mysqli_num_rows($result) == 1) {
-					foreach($result as $enr)
+					foreach($result as $enr) {
 	  		 			$_SESSION['num_user'] = $enr['id'];
+					}
 				}
 				
 				header("location: home.php");

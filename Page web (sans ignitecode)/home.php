@@ -31,7 +31,7 @@
 	<body>
 		<p>Welcome <?php echo $_SESSION['username']; ?></p>
 		<div class="friends">
-			<a href="add_friend.php">Ajouter un amis</a>
+			<a href="add_friend.php">Ajouter un ami</a>
 			<h6>Amis</h6>
 			<div class="demande_reçus">
 			</div>

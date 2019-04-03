@@ -33,6 +33,8 @@
 				$_SESSION['login'] = $username;
 				$_SESSION['message'] = "Connecté";
 				$_SESSION['username'] = $username;
+				$_SESSION['num_user'] = mysqli_insert_id();
+				
 				header("location: home.php");
 			}
 			else {

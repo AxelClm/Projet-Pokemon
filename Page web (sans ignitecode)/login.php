@@ -21,7 +21,7 @@
 		if (mysqli_num_rows($result) == 1) {
 			foreach($result as $enr) {
 	  			$_SESSION['num_user'] = $enr['id'];
-	    		}
+	  		}
 			
 			$_SESSION['login'] = $_POST['pseudo'];
 			$_SESSION['message'] = "Connecté";

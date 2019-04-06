@@ -210,5 +210,46 @@ function get_users_list($num_user,$username,$shema){
   
     return $res;
 }
-
+function get_pokemon_equipe($num_user){
+    $db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
+    $query = "SELECT
+        Pokemon.Nom,
+        Pokemon_des_dresseurs.Id_pokemon,
+        Pokemon_des_dresseurs.Num_pokemon,
+        Pokemon_des_dresseurs.Place_dans_equipe,
+        Pokemon_des_dresseurs.Niveau
+    FROM
+        Pokemon_des_dresseurs,
+        Pokemon
+    WHERE
+        Pokemon_des_dresseurs.Equipe = 1 AND Pokemon_des_dresseurs.Num_dresseur = $num_user AND Pokemon_des_dresseurs.Num_pokemon = Pokemon.Num";
+    $res =  mysqli_query($db,$query);
+    mysqli_close($db);
+    return $res;
+}
+function get_pokemon_boite($num_user){
+    $db = mysqli_connect('dwarves.iut-fbleau.fr', 'clementa', 'clementa', 'clementa');
+    $query = "SELECT
+        Pokemon.Nom,
+        Pokemon_des_dresseurs.Id_pokemon,
+        Pokemon_des_dresseurs.Num_pokemon,
+        Pokemon_des_dresseurs.Place_dans_equipe,
+        Pokemon_des_dresseurs.Niveau
+    FROM
+        Pokemon_des_dresseurs,
+        Pokemon
+    WHERE
+        Pokemon_des_dresseurs.Num_dresseur = $num_user AND Pokemon_des_dresseurs.Num_pokemon = Pokemon.Num AND Pokemon_des_dresseurs.Id_pokemon NOT IN
+        (
+        SELECT
+            Pokemon_des_dresseurs.Id_pokemon
+        FROM
+            Pokemon_des_dresseurs
+        WHERE
+            Pokemon_des_dresseurs.Equipe = 1 AND Pokemon_des_dresseurs.Num_dresseur = $num_user
+        )";
+    $res =  mysqli_query($db,$query);
+    mysqli_close($db);
+    return $res;
+}
 ?>

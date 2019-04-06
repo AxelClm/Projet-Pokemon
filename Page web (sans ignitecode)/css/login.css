@@ -10,7 +10,7 @@ body{
   text-decoration: none;
 }
 #error {
-  width:280px;
+  width: 280px;
   text-align: center;
   border: 2px solid red;
   background-color: red;

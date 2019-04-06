@@ -4,8 +4,9 @@ session_start();
 include 'fonctions.php';
 
 if (!besoin_de_starter($_SESSION['num_user'])) {
-    header("location: home.php");
-    exit();
+    echo "Fixing";
+    // header("location: home.php");
+    // exit();
 }
 
 ?>
@@ -18,11 +19,16 @@ if (!besoin_de_starter($_SESSION['num_user'])) {
         <link rel="stylesheet" type="text/css" href="css/starter.css">
     </head>
     <body>
-        <!-- Bulbizarre -->
-        <a href="redirection.php?starter=1" id="blbzr"><img src="css/bg1.png"></a>
-        <!-- Salamèche -->
-        <a href="redirection.php?starter=4" id="slm"><img src="css/bg2.png"></a>
-        <!-- Carapuce -->
-        <a href="redirection.php?starter=8" id="crpc"><img src="css/bg3.png"></a>
+        <div class="background">
+            <div id="c1">
+                <a href="redirection.php?starter=1"><img src="css/bulbizarre.png" id="bulb"></a>
+            </div>
+            <div id="c2">
+                <a href="redirection.php?starter=4"><img src="css/salameche.png" id="sala"></a>
+            </div>
+            <div id="c3">
+                <a href="redirection.php?starter=8"><img src="css/carapuce.png" id="cara"></a>
+            </div>
+        </div>
     </body>
 </html>

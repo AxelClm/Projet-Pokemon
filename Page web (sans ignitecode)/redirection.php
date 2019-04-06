@@ -71,6 +71,25 @@ if (isset($_GET['get_users_list'])){
 
 if (isset($_GET['add_friend'])){
     add_friends($_GET['add_friend'],$_SESSION['num_user']);
+    exit();
+}
+if (isset($_GET["get_pokemon_equipe"])){
+    $res = get_pokemon_equipe($_SESSION['num_user']);
+    $rows = array();
+    while($r = mysqli_fetch_assoc($res)){
+        $rows[] = $r;
+    }
+    echo json_encode($rows);
+    exit();
+}
+if(isset($_GET["get_pokemon_boite"])){
+    $res = get_pokemon_boite($_SESSION['num_user']);
+    $rows = array();
+    while($r = mysqli_fetch_assoc($res)){
+        $rows[] = $r;
+    }
+    echo json_encode($rows);
+    exit();
 }
 
 ?>

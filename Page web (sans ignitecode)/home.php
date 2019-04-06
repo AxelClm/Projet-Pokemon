@@ -44,6 +44,11 @@ if (need_reward($_SESSION['num_user'])){
             <div class="demande_faite">
             </div>
         </div>
+        <div id="selection">
+            <div id="gerer_equipe">
+                <p onclick="afficher_gerer_equipe()">Gerer Equipe</p>
+            </div>
+        </div>
         <p><a href="redirection.php?disconnect=true">Log out</a></p>
     </body>
 </html>
@@ -73,7 +78,6 @@ if (need_reward($_SESSION['num_user'])){
    
     function update_demande_reçus(){
         var xhr = new XMLHttpRequest();
-        console.log("update demande");
         xhr.open('GET','redirection.php?friends=demande_r',true);
         xhr.addEventListener('readystatechange',function(){
             if((xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)){
@@ -98,7 +102,6 @@ if (need_reward($_SESSION['num_user'])){
 
     function update_friends_div(){
         var xhr = new XMLHttpRequest();
-        console.log("update demande friend_list");
         xhr.open('GET','redirection.php?friends=friend_list',true);
         xhr.addEventListener('readystatechange',function(){
             if((xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)){
@@ -112,16 +115,15 @@ if (need_reward($_SESSION['num_user'])){
                         text_online = text_online + "<div>"+"<p>"+tab[i]["username"]+"</p>"+"<p>En ligne</p>"+"</div>";
                 } else {
                     time_deconnecter = time_actuel - tab[i]['last_connect'];
-                    if((time_actuel - tab[i]['last_connect']) > 86400){
-                        console.log('jour');
-                        time_deconnecter = parseInt(time_deconnecter/86400) + ' jour(s)';
-                    }
-                    if ((time_actuel - tab[i]['last_connect']) > 3600 && (time_actuel - tab[i]['last_connect']) < 86400 ){
-                        console.log('heures');
-                        time_deconnecter = parseInt(time_deconnecter/3600) + ' heure(s)';
-                    } else {
-                        console.log('minutes');
+                    if((time_actuel - tab[i]['last_connect']) < 60){
                         time_deconnecter = parseInt(time_deconnecter/60) + ' minutes(s)';
+                        
+                    }
+                    else if ((time_actuel - tab[i]['last_connect']) > 3600 && (time_actuel - tab[i]['last_connect']) < 86400 ){
+                        time_deconnecter = parseInt(time_deconnecter/3600) + ' heure(s)';
+                    } 
+                    else {
+                        time_deconnecter = parseInt(time_deconnecter/86400) + ' jour(s)';
                     }
                     text_offline = text_offline  + "<div>"+"<p>"+tab[i]["username"]+"</p>"+"<p>Hors-ligne depuis "+ time_deconnecter+"</p>"+"</div>";
                     }
@@ -137,9 +139,77 @@ if (need_reward($_SESSION['num_user'])){
         update_demande_reçus();
         update_friends_div();
     }
+    function create_fenetre(){
+        let window_div = document.createElement("div");
+        let topbar_div = document.createElement("div");
+        let close_div  = document.createElement("div");
+        let equipe_pokemon_div = document.createElement("div");
+        let boite_pokemon_div = document.createElement("div");
+        equipe_pokemon_div.className = "equipe_pokemon_div";
+        boite_pokemon_div.className = "boite_pokemon_div";
+        window_div.className = "window";
+        topbar_div.className = "topbar";
+        close_div.className = "close";
+        document.querySelector("body").appendChild(window_div);
+        document.querySelector(".window").appendChild(topbar_div);
+        document.querySelector(".topbar").appendChild(close_div);
+        document.querySelector(".close").innerHTML = 'x';
+        document.querySelector(".window").appendChild(equipe_pokemon_div);
+        document.querySelector(".window").appendChild(boite_pokemon_div);
+        openGereEquipe = 1;
+        document.querySelector(".close").addEventListener("click",function ()
+            { 
+            document.querySelector("body").removeChild(document.querySelector(".window")); 
+            openGereEquipe = 0;
+            });
+
+    }
+    function update_pokemon_div(){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET','redirection.php?get_pokemon_equipe=true',true);
+        xhr.addEventListener('readystatechange', function () {
+            if((xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)){
+                var tab = JSON.parse(xhr.responseText);
+                text_pokemon = '<p>Equipe<p>';
+                for(var i = 0 ; i < 6 ; i++){
+                    console.log(tab[i]);
+                    if(i<tab.length){
+                        text_pokemon = text_pokemon + "<div><p>"+tab[i]["Nom"]+"</p><p> lvl: "+tab[i]["Niveau"]+"</p></div>";
+                    }
+                    else {
+                        text_pokemon = text_pokemon + "<div><p>vide</p></div>"
+                    }
+                }
+                document.querySelector(".equipe_pokemon_div").innerHTML = text_pokemon;
+            }
+        });
+        xhr.send();
+    }
+    function update_pokemon_boite(){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET','redirection.php?get_pokemon_boite=true',true);
+        xhr.addEventListener('readystatechange', function () {
+            if((xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)){
+                var tab = JSON.parse(xhr.responseText);
+                text_pokemon = '<p>boite<p>';
+                for(var i = 0 ; i < tab.length ; i++){
+                    text_pokemon = text_pokemon + "<div><p>"+tab[i]["Nom"]+"</p><p> lvl: "+tab[i]["Niveau"]+"</p></div>";
+                }
+                document.querySelector(".boite_pokemon_div").innerHTML = text_pokemon;
+            }
+        });
+        xhr.send();
+    }
+    function afficher_gerer_equipe(){
+        if (openGereEquipe == 0){
+            create_fenetre();
+            update_pokemon_div();
+            update_pokemon_boite();
+        }
+    }
+    var openGereEquipe = 0;
 
     update_social_div();
-
     setInterval(update_demande_reçus,5000);
     setInterval(update_friends_div,10000);
 

@@ -34,7 +34,7 @@ if (need_reward($_SESSION['num_user'])){
         <p>Bienvenue <?php echo $_SESSION['username']; ?> !</p>
         <div class="friends">
             <a href="add_friend.php">Ajouter un ami</a>
-            <h6>Vos amis</h6>
+            <h3>Vos amis</h6>
             <div class="demande_reçus">
             </div>
             <div class="online_friends">
@@ -84,8 +84,8 @@ if (need_reward($_SESSION['num_user'])){
                 var tab = JSON.parse(xhr.responseText);
                 var text="";
                 for (var i = 0;i<tab.length;i++){
-                    text = text+"<div><p>"+tab[i]['username']+"</p><p id='demande_add_"+tab[i]['id']+"'>accepter</p>"
-               +"<p id='demande_refus_"+tab[i]['id']+"'>refuser</p></div>";
+                    text = text+"<div><p>"+tab[i]['username']+"</p><p id='demande_add_"+tab[i]['id']+"' class='btn'>Accepter</p>"
+               +"<p id='demande_refus_"+tab[i]['id']+"' class='btn'>Refuser</p></div>";
                 }
                 document.querySelector(".demande_reçus").innerHTML = text;
                 for (var j = 0;j<tab.length;j++){

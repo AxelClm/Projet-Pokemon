@@ -6,3 +6,138 @@ body {
 .btn {
 	cursor: pointer;
 }
+* {
+	margin : 0;
+	padding: 0;
+}
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+
+div.window{
+	width: 50%;
+	height: 50%;
+	position: fixed;
+	top: 25%;
+	left: 25%;
+	background-color: rgb(240,240,240);
+	border-radius: 2px;
+	border-style: solid;
+}
+.topbar {
+	width: 100%;
+	height: 5%;
+	background-color: grey;
+}
+.window_content{
+	height: 95%;
+	overflow: hidden;
+	width: 100%;
+
+}
+.close {
+	margin-left: 95%;
+	width: 5%;
+	color: red;
+	font-size: 80%;
+	text-align: center;
+}
+.equipe_pokemon_div{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	width: 35%;
+	height: 100%;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+.boite_pokemon_div{
+	display: inline-block;
+	width: 65%;
+	height: 100%;
+	overflow-y: scroll;
+}
+.pokemon_div_equipe{
+	display: block;
+	height: calc(14% - 3px);
+	margin-top:1%;
+	margin-bottom:1%;
+	width: 96%;
+	margin-left: 2%;
+	margin-right: 2%;
+	border-color: blue;
+	border-style: solid;
+	background-color: #10b9fa;
+	border-radius: 3px;
+}
+.pokemon_div_equipe_gauche{
+	display: inline-block;
+	margin:0;
+	padding:0;
+	width: 32%;
+	height: 100%;
+	overflow: hidden;
+}
+.equipe_gauche_img{
+	display: block;
+	width: 100%;
+	height: 63%;
+	text-align: center;
+}
+.equipe_gauche_img img{
+	width: auto;
+	height: 100%;
+}
+.equipe_gauche_lvl {
+	display: block;
+	height: 32%;
+	width: 100%;
+	text-align: center;
+	font-size: 75%;
+}
+.pokemon_div_equipe_droit{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 63%;
+	overflow: hidden;
+}
+.equipe_droit_nom{
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 32%;
+	width: 100%;
+	text-align: left;
+	font-size: 70%;
+}
+.equipe_droit_pv{
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 32%;
+	width: 100%;
+	text-align: left;
+	font-size: 70%;
+
+}
+.equipe_droit_numpv{
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 32%;
+	width: 100%;
+	text-align: center;
+	font-size: 70%;
+}

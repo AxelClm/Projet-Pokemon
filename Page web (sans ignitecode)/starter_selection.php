@@ -27,7 +27,7 @@ if (!besoin_de_starter($_SESSION['num_user'])) {
                 <a href="redirection.php?starter=4"><img src="css/salameche.png" id="sala"></a>
             </div>
             <div id="c3">
-                <a href="redirection.php?starter=8"><img src="css/carapuce.png" id="cara"></a>
+                <a href="redirection.php?starter=7"><img src="css/carapuce.png" id="cara"></a>
             </div>
         </div>
     </body>

@@ -4,7 +4,7 @@ session_start();
 include("fonctions.php");
 
 if (isset($_GET['starter'])){
-    if(besoin_de_starter($_SESSION['num_user']) == 1){
+    if(besoin_de_starter($_SESSION['num_user']) == 1 && ($_GET["starter"] == 1 || $_GET["starter"] == 4 || $_GET["starter"] == 7)){
         create_starter($_GET['starter'],$_SESSION['num_user'],1);
     }
     header("location: home.php");

@@ -1,5 +1,6 @@
 html {
 	height: 100%;
+	font-family: sans-serif;
 }
 
 body {
@@ -53,8 +54,35 @@ img {
 	transition-duration: 0.25s;
 }
 
+#bulb:hover {
+	width: 40%;
+	transition-duration: 0.25s;
+}
+
 #sala:hover {
 	width: 40%;
 	transition-duration: 0.25s;
 }
 
+#cara:hover {
+	width: 40%;
+	transition-duration: 0.25s;
+}
+
+.txt {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	width: 100%;
+
+	background-color: black;
+
+	color: white;
+	font-style: oblique;
+	text-align: center;
+	font-size: 150%;
+	font-variant: small-caps;
+	letter-spacing: 3px;
+	word-spacing: 9px;
+}

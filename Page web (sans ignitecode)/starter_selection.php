@@ -4,9 +4,8 @@ session_start();
 include 'fonctions.php';
 
 if (!besoin_de_starter($_SESSION['num_user'])) {
-    echo "Fixing";
-    // header("location: home.php");
-    // exit();
+    header("location: home.php");
+    exit();
 }
 
 ?>
@@ -19,6 +18,7 @@ if (!besoin_de_starter($_SESSION['num_user'])) {
         <link rel="stylesheet" type="text/css" href="css/starter.css">
     </head>
     <body>
+        <div class="txt"><p>Choisissez votre pokémon!</p></div>
         <div class="background">
             <div id="c1">
                 <a href="redirection.php?starter=1"><img src="css/bulbizarre.png" id="bulb"></a>

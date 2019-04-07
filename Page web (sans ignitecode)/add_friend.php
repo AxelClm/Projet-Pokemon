@@ -9,10 +9,11 @@ session_start();
     <head>
         <meta charset="utf-8">
         <title>Ajouter un ami</title>
+        <link rel="stylesheet" type="text/css" href="css/add_friend.css">
     </head>
     <body>
         <div class="add_friend">
-            <input type="text" id="find_friend" oninput="update_addfriends_div()">
+            <input type="text" id="find_friend" placeholder="Entrez votre recherche" oninput="update_addfriends_div()">
             <div></div>
         </div>
     </body>
@@ -42,7 +43,7 @@ session_start();
                 var tab = JSON.parse(xhr.responseText);
                 var text="";
                 for (var i = 0; i < tab.length; i++){
-                    text=text+"<div><p>"+ tab[i]['username'] +"</p><p id=user_"+tab[i]['id']+">ajouter</p></div>";
+                    text=text+"<div class='friends'><p class='user'><i class='fa fa-user' aria-hidden='true'></i> "+ tab[i]['username'] +"</p><p id=user_"+tab[i]['id']+" class='add'>Ajouter</p></div>";
                 }
                 document.querySelector('.add_friend div').innerHTML = text;
                 for (var j = 0; j < tab.length; j++){

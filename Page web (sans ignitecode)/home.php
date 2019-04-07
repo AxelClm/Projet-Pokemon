@@ -6,14 +6,14 @@ if (!isset($_SESSION['num_user']) || !isset($_SESSION['login'])) {
 }
 
 include 'fonctions.php';
-	//Mise a jour de la derniere connection
+    //Mise a jour de la derniere connection
 is_connected($_SESSION['num_user']);
-	//redirection vers la page de selection des starters si besoin
+    //redirection vers la page de selection des starters si besoin
 if(besoin_de_starter($_SESSION['num_user']) == 1){
     header("location: starter_selection.php");
     exit();
 }
-	//redirection vers la page des recompenses
+    //redirection vers la page des recompenses
 if (need_reward($_SESSION['num_user'])){
     header("location: reward.php");
     exit();
@@ -31,10 +31,10 @@ if (need_reward($_SESSION['num_user'])){
     </head>
 
     <body>
-        <p>Welcome <?php echo $_SESSION['username']; ?></p>
+        <p>Bienvenue <?php echo $_SESSION['username']; ?> !</p>
         <div class="friends">
             <a href="add_friend.php">Ajouter un ami</a>
-            <h6>Amis</h6>
+            <h6>Vos amis</h6>
             <div class="demande_reçus">
             </div>
             <div class="online_friends">
@@ -46,10 +46,10 @@ if (need_reward($_SESSION['num_user'])){
         </div>
         <div id="selection">
             <div id="gerer_equipe">
-                <p onclick="afficher_gerer_equipe()">Gerer Equipe</p>
+                <p onclick="afficher_gerer_equipe()">Gérer votre équipe</p>
             </div>
         </div>
-        <p><a href="redirection.php?disconnect=true">Log out</a></p>
+        <p><a href="redirection.php?disconnect=true">Se déconnecter</a></p>
     </body>
 </html>
 

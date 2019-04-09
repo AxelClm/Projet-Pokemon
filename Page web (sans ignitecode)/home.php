@@ -170,21 +170,50 @@ if (need_reward($_SESSION['num_user'])){
         xhr.addEventListener('readystatechange', function () {
             if((xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)){
                 var tab = JSON.parse(xhr.responseText);
-                text_pokemon = '';
                 for(var i = 0 ; i < 6 ; i++){
+                        let pokemon_div_equipe = document.createElement("div");
+                        pokemon_div_equipe.className = "pokemon_div_equipe";
                     if(i<tab.length){
-                        text_pokemon=text_pokemon+"<div class=\"pokemon_div_equipe\"><div class=\"pokemon_div_equipe_gauche\"><div class=\"equipe_gauche_img\">";
-                        text_pokemon=text_pokemon+afficher_pokemon("miniature",tab[i]['Num_pokemon']) + "</div>";
-                        text_pokemon=text_pokemon+"<div class=\"equipe_gauche_lvl\">N."+tab[i]['Niveau']+"</div></div>";
-                        text_pokemon=text_pokemon+"<div class=\"pokemon_div_equipe_droit\"><div class=\"equipe_droit_nom\">";
-                        text_pokemon=text_pokemon+tab[i]['Nom']+"</div><div class=\"equipe_droit_pv\">";
-                        text_pokemon=text_pokemon+"PV"+"</div><div class=\"equipe_droit_numpv\">XXX/XXX</div></div></div>";
+                        let pokemon_div_equipe_gauche = document.createElement("div");
+                        pokemon_div_equipe_gauche.className = "pokemon_div_equipe_gauche";
+                        pokemon_div_equipe.appendChild(pokemon_div_equipe_gauche);
+                        
+                        let equipe_gauche_img = document.createElement("div");
+                        equipe_gauche_img.className="equipe_gauche_img";
+                        equipe_gauche_img.innerHTML= afficher_pokemon("miniature",tab[i]['Num_pokemon']);
+                        pokemon_div_equipe_gauche.appendChild(equipe_gauche_img);
+                        
+                        let equipe_gauche_lvl = document.createElement("div");
+                        equipe_gauche_lvl.className="equipe_gauche_lvl";
+                        equipe_gauche_lvl.innerHTML="N." + tab[i]['Niveau'];
+                        pokemon_div_equipe_gauche.appendChild(equipe_gauche_lvl);
+                        
+                        let pokemon_div_equipe_droit = document.createElement("div");
+                        pokemon_div_equipe_droit.className="pokemon_div_equipe_droit";
+                        pokemon_div_equipe.appendChild(pokemon_div_equipe_droit);
+                        
+                        let equipe_droit_nom=document.createElement("div");
+                        equipe_droit_nom.className="equipe_droit_nom";
+                        equipe_droit_nom.innerHTML=tab[i]["Nom"];
+                        pokemon_div_equipe_droit.appendChild(equipe_droit_nom);
+
+                        let equipe_droit_pv=document.createElement("div");
+                        equipe_droit_pv.className ="equipe_droit_pv";
+                        equipe_droit_pv.innerHTML ="PV:"
+                        pokemon_div_equipe_droit.appendChild(equipe_droit_pv);
+                        
+                        let equipe_droit_numpv=document.createElement("div");
+                        equipe_droit_numpv.className="equipe_droit_numpv";
+                        equipe_droit_numpv.innerHTML="XXXX/XXXX";
+                        pokemon_div_equipe_droit.appendChild(equipe_droit_numpv);
+
+                        pokemon_div_equipe.Id_pokemon = tab[i]['Id_pokemon'];
+                        pokemon_div_equipe.place_dans_equipe = i + 1;
+                        pokemon_div_equipe.onclick = function(){console.log(this.Id_pokemon + "&&" + this.place_dans_equipe)};
                     }
-                    else {
-                        text_pokemon = text_pokemon + "<div class=\"pokemon_div_equipe\"></div>"
-                    }
+                document.querySelector(".equipe_pokemon_div").appendChild(pokemon_div_equipe);
                 }
-                document.querySelector(".equipe_pokemon_div").innerHTML = text_pokemon;
+               
             }
         });
         xhr.send();

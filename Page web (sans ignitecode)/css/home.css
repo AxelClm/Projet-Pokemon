@@ -70,6 +70,7 @@ div.window{
 	margin-top:1%;
 	margin-bottom:1%;
 	width: 96%;
+	width: calc(96%-6px);
 	margin-left: 2%;
 	margin-right: 2%;
 	border-color: blue;

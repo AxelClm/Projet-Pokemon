@@ -1,0 +1,24 @@
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+#left {
+	width:25%;
+	float:left;
+	background-color: #4F7F43;
+	height: 100%;
+}
+
+#right {
+	width:25%;
+	float:right;
+	background-color: #4F7F43;
+	height: 100%;
+}
+
+#center {
+	background-color: #7EC9AB; 
+	height: 100%;
+}

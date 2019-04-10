@@ -73,3 +73,10 @@ body{
   cursor: pointer;
   margin: 12px 0;
 }
+
+@media screen and (max-width: 1551px) {
+  body {
+    background: no-repeat;
+    background-color: #7EC9AB;
+  }
+}

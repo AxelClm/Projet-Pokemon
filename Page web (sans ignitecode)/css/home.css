@@ -20,125 +20,7 @@ body {
 }
 
 /* --------------- */
-div.window{
-	width: 50%;
-	height: 50%;
-	position: fixed;
-	top: 25%;
-	left: 25%;
-	background-color: rgb(240,240,240);
-	border-radius: 2px;
-	border-style: solid;
-}
-.topbar {
-	width: 100%;
-	height: 5%;
-	background-color: grey;
-}
-.window_content{
-	height: 95%;
-	overflow: hidden;
-	width: 100%;
 
-}
-.close {
-	cursor: pointer;
-	margin-left: 95%;
-	width: 5%;
-	color: white;
-	font-size: 90%;
-	text-align: center;
-}
-.equipe_pokemon_div{
-	display: inline-block;
-	margin: 0;
-	padding: 0;
-	width: 35%;
-	height: 100%;
-	overflow-y: hidden;
-	overflow-x: hidden;
-}
-.boite_pokemon_div{
-	display: inline-block;
-	width: 65%;
-	height: 100%;
-	overflow-y: scroll;
-}
-.pokemon_div_equipe{
-	display: block;
-	height: calc(14% - 3px);
-	margin-top:1%;
-	margin-bottom:1%;
-	width: 96%;
-	width: calc(96%-6px);
-	margin-left: 2%;
-	margin-right: 2%;
-	border-color: blue;
-	border-style: solid;
-	background-color: #10b9fa;
-	border-radius: 3px;
-}
-.pokemon_div_equipe_gauche{
-	display: inline-block;
-	margin:0;
-	padding:0;
-	width: 32%;
-	height: 100%;
-	overflow: hidden;
-}
-.equipe_gauche_img{
-	display: block;
-	width: 100%;
-	height: 63%;
-	text-align: center;
-}
-.equipe_gauche_img img{
-	width: auto;
-	height: 100%;
-}
-.equipe_gauche_lvl {
-	display: block;
-	height: 32%;
-	width: 100%;
-	text-align: center;
-	font-size: 75%;
-}
-.pokemon_div_equipe_droit{
-	display: inline-block;
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	width: 63%;
-	overflow: hidden;
-}
-.equipe_droit_nom{
-	display: block;
-	margin: 0;
-	padding: 0;
-	height: 32%;
-	width: 100%;
-	text-align: left;
-	font-size: 70%;
-}
-.equipe_droit_pv{
-	display: block;
-	margin: 0;
-	padding: 0;
-	height: 32%;
-	width: 100%;
-	text-align: left;
-	font-size: 70%;
-
-}
-.equipe_droit_numpv{
-	display: block;
-	margin: 0;
-	padding: 0;
-	height: 32%;
-	width: 100%;
-	text-align: center;
-	font-size: 70%;
-}
 /* ---------------- */
 .row {
 	display: flex;
@@ -148,30 +30,26 @@ div.window{
 
 .left {
 	height: 100%;
-	width: 25%;
-	background-color: #4F7F43;
+	width: 8%;
+	background: linear-gradient(to top, #434343, #000000);
 
-	border-right: 5px solid black;
-	text-align: center;
-	color: white;
-}
+	
 
-.right {
-	height: 100%;
-	width: 12%;
-	background-color: #4F7F43;
-
-	border-left: 5px solid black;
 	text-align: center;
 	color: white;
 
 	position: relative;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .center {
 	height: 100%;
-	width: 63%;
-    background: #7EC9AB;
+	width: 68%;
+    background: linear-gradient(to top, #f5f7fa, #c3cfe2);
 
     display: flex;
     text-align: center;
@@ -179,37 +57,87 @@ div.window{
     justify-content: center;
 }
 
-.right a {
+.right {
+	height: 100%;
+	width: 24%;
+	background: linear-gradient(to top, #434343, #000000);
+
+	
+
+	text-align: center;
+	color: white;
+}
+
+.left div {
+	margin-top: 30%;
+}
+
+.left a {
 	color: white;
 	cursor: pointer;
 	text-decoration: none;
-	margin-top: 50px;
 }
 
-.right i {
-	padding-top: 10%;
+.left i {
 	cursor: pointer;
 	font-size: 300%; /* Augmente la taille de l'icône */
+	transition-duration: 0.2s;
 }
 
-/*.right i span {
-	padding-left: 15%;
-	font-size: 50%;
-}*/
+.left i:hover {
+	font-size: 380%;
+	transition-duration: 0.2s;
+}
+.right #add {
+	height: 15%;
 
-.right .link {
-	position: absolute;
-	bottom: 10px;
-	right: 15px;
+	display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
+.right #add i {
+	cursor: pointer;
+	font-size: 300%;
+	transition-duration: 0.2s;
+}
+.right #add i:hover {
+	font-size: 380%;
+	transition-duration: 0.2s;
+}
+
+.right .offline_friends .offline-user #offline-logo {
+	color: red;
+}
+
+.right .online_friends .online-user #online-logo {
+	color: green;
+}
+
+.right .demande_reçus {
+	margin: 10%;
+}
+
+.right .request i {
+	font-size: 150%;
+	cursor: pointer;
+}
+
+.right .online-user {
+	width: 405px;
+}
+
+.right .offline-user span {
+	width: 50px;
+}
 @media screen and (max-width: 1018px) {
-  	.right {
+  	.left {
   		width: 0;
   		height: 0;
   		visibility: hidden;
   	}
-  	.left {
+  	.right {
   		width: 0;
   		height: 0;
   		visibility: hidden;

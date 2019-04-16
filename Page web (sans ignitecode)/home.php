@@ -26,42 +26,54 @@ if (need_reward($_SESSION['num_user'])){
         <title>Pokemon</title>
         <link rel="stylesheet" type="text/css" href="css/home.css">
         <link rel="icon" href="icon.ico" />
+        <link rel="stylesheet" type="text/css" href="css/window.css">
     </head>
 
     <body>
         <div class="row">
+                <div class="left">
+                        <div id="gerer_equipe">
+                            <i class="fa fa-th-large" aria-hidden="true" onclick="afficher_gerer_equipe()"></i>
+                        </div>
 
-            <div class="left">
-                <a href="add_friend.php">Ajouter un ami</a>
-                <h3>Vos amis</h3>
-                <div class="demande_reçus">
+                        <div id="shop">
+                            <i class="fa fa-shopping-cart" aria-hidden="true" onclick=""></i>
+                        </div>
+
+                        <div id="profile">
+                            <i class="fa fa-user-circle" aria-hidden="true" onclick=""></i>
+                        </div>
+
+                        <div id="logout">
+                            <a href="redirection.php?disconnect=true" class="link">
+                                <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
+                            </a>
+                        </div>
                 </div>
-                <div class="online_friends">
+
+                <div class="center">
+                        <p>Le jeu</p>
                 </div>
-                <div class="offline_friends">
-                </div>
-                <div class="demande_faite">
+
+                <div class="right">
+                        <div id="add"/>
+                            <i class="fa fa-user-plus" aria-hidden="true" onclick=""></i>
+                        </div>
+                        
+                        <h3>Vos amis</h3>
+                        
+                        <div class="demande_reçus">
+                        </div>
+                        
+                        <div class="status">
+                                <div class="online_friends">
+                                </div>
+                                
+                                <div class="offline_friends">
+                                </div>
+                        </div>
                 </div>
             </div>
-            
-            <div class="center">
-                <p>Le jeu</p>
-            </div>
-
-            <div class="right">
-                <div id="gerer_equipe">
-                    <i class="fa fa-th-large" aria-hidden="true" onclick="afficher_gerer_equipe()"><!-- <span>Équipe</span> --></i>
-                </div>
-                <div id="shop">
-                    <i class="fa fa-shopping-cart" aria-hidden="true" onclick=""><!-- <span>Shop</span> --></i>
-                </div>
-                <div id="profile">
-                    <i class="fa fa-user-circle" aria-hidden="true" onclick=""><!-- <span>Profil</span> --></i>
-                </div>
-                <a href="redirection.php?disconnect=true" class="link">Se déconnecter</a>
-            </div>
-
-        </div>
     </body>
 </html>
 <script type="text/javascript" src="friends.js"></script>

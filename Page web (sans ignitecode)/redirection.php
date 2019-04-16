@@ -91,5 +91,13 @@ if(isset($_GET["get_pokemon_boite"])){
     echo json_encode($rows);
     exit();
 }
-
+if(isset($_GET["Swap_Pokemon_id"]) && $_GET["with"]){
+    swap_pokemon_equipe($_SESSION['num_user'],$_GET["Swap_Pokemon_id"],$_GET["with"]);
+}
+if(isset($_GET["Pokemon_vers_boite"])){
+    pokemon_vers_boite($_SESSION['num_user'],$_GET["Pokemon_vers_boite"]);
+}
+if(isset($_GET["Pokemon_vers_equipe"])){
+    boite_vers_equipe($_GET["Pokemon_vers_equipe"],$_SESSION['num_user']);
+}
 ?>

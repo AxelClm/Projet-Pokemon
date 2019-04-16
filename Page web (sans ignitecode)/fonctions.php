@@ -222,7 +222,8 @@ function get_pokemon_equipe($num_user){
         Pokemon_des_dresseurs,
         Pokemon
     WHERE
-        Pokemon_des_dresseurs.Equipe = 1 AND Pokemon_des_dresseurs.Num_dresseur = $num_user AND Pokemon_des_dresseurs.Num_pokemon = Pokemon.Num";
+        Pokemon_des_dresseurs.Equipe = 1 AND Pokemon_des_dresseurs.Num_dresseur = $num_user AND Pokemon_des_dresseurs.Num_pokemon = Pokemon.Num
+    ORDER BY Pokemon_des_dresseurs.Place_dans_equipe";
     $res =  mysqli_query($db,$query);
     mysqli_close($db);
     return $res;
@@ -251,5 +252,90 @@ function get_pokemon_boite($num_user){
     $res =  mysqli_query($db,$query);
     mysqli_close($db);
     return $res;
+}
+function pokemon_is_in_equipe($num_user,$num_pokemon){
+    $db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+    $query = "
+    SELECT
+        Id_pokemon
+    FROM
+        `Pokemon_des_dresseurs`
+    WHERE
+        Id_pokemon = $num_pokemon AND Num_dresseur = $num_user AND equipe = 1;";
+    $res =  mysqli_query($db,$query);
+    mysqli_close($db);
+    if (mysqli_num_rows($res) == 1){
+        return 1;
+    }
+    return 0;
+}
+function pokemon_is_in_boite($num_user,$num_pokemon){
+    $db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+    $query = "
+    SELECT
+        Id_pokemon
+    FROM
+        `Pokemon_des_dresseurs`
+    WHERE
+        Id_pokemon = $num_pokemon AND Num_dresseur = $num_user AND Equipe = 0;";
+    $res =  mysqli_query($db,$query);
+    mysqli_close($db);
+    if (mysqli_num_rows($res) == 1){
+        return 1;
+    }
+    return 0;
+}
+/*DEFINITION Pokemon_swap_equipe
+DELIMITER //
+CREATE OR REPLACE PROCEDURE Pokemon_swap_equipe(IN p_pokemon1 INT,IN p_pokemon2 INT)
+BEGIN
+        SET @var1 = 0;
+        SET @var2 = 0;
+        SELECT Pokemon_des_dresseurs.Place_dans_equipe INTO @var1 FROM Pokemon_des_dresseurs WHERE Pokemon_des_dresseurs.Id_pokemon = p_pokemon1;
+        SELECT Pokemon_des_dresseurs.Place_dans_equipe INTO @var2 FROM Pokemon_des_dresseurs WHERE Pokemon_des_dresseurs.Id_pokemon = p_pokemon2;
+        UPDATE Pokemon_des_dresseurs SET Pokemon_des_dresseurs.Place_dans_equipe = @var2 WHERE Pokemon_des_dresseurs.Id_pokemon = p_pokemon1;
+        UPDATE Pokemon_des_dresseurs SET Pokemon_des_dresseurs.Place_dans_equipe = @var1 WHERE Pokemon_des_dresseurs.Id_pokemon = p_pokemon2;
+END //
+*/
+function swap_pokemon_equipe($num_user,$num_pokemon1,$num_pokemon2){
+    //On commence par verifier que les pokemon soient bien dans l'équipe du dresseur
+    if(pokemon_is_in_equipe($num_user,$num_pokemon1) != 1 || pokemon_is_in_equipe($num_user,$num_pokemon2) != 1){
+        exit();
+    }
+    $db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+    $query = "CALL Pokemon_swap_equipe($num_pokemon1,$num_pokemon2);";
+    mysqli_query($db,$query);
+    mysqli_close($db);
+}
+/* DEFINITION  pokemon_vers_boite
+DELIMITER //
+CREATE OR REPLACE PROCEDURE pokemon_vers_boite(IN p_num_dresseur INT,IN p_pokemon1 INT)
+BEGIN
+    SET @var1;
+    SELECT Place_dans_equipe INTO @var1 WHERE Id_pokemon = p_pokemon1;
+    UPDATE Pokemon_des_dresseurs SET Place_dans_equipe = null,Equipe = 0 WHERE Id_pokemon = p_pokemon1;
+    UPDATE Pokemon_des_dresseurs SET Place_dans_equipe = Place_dans_equipe - 1 WHERE Place_dans_equipe > @var1 AND Num_dresseur = p_num_dresseur;
+END //
+*/
+function can_drop($num_user){
+    
+}
+function pokemon_vers_boite($num_user,$num_pokemon){
+    if(pokemon_is_in_equipe($num_user,$num_pokemon) != 1){
+        exit();
+    }
+    $db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+    $query = "CALL pokemon_vers_boite($num_user,$num_pokemon);";
+    mysqli_query($db,$query);
+    mysqli_close($db);
+}
+function boite_vers_equipe($num_user,$num_pokemon){
+    if(pokemon_is_in_equipe($num_user,$num_pokemon)){
+        exit();
+    }
+    $db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+    $query = "CALL pokemon_vers_equipe($num_user,$num_pokemon);";
+    mysqli_query($db,$query);
+    mysqli_close($db);
 }
 ?>

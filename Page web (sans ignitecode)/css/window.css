@@ -1,0 +1,236 @@
+div.window{
+	width: 76%;
+	height: 76%;
+	position: fixed;
+	top: 12%;
+	left: 12%;
+	background-color: rgb(240,240,240);
+	border-radius: 2px;
+	border-style: solid;
+}
+.topbar {
+	width: 100%;
+	height: 5%;
+	background-color: grey;
+}
+.window_content{
+	height: 95%;
+	overflow: hidden;
+	width: 100%;
+
+}
+.close {
+	cursor: pointer;
+	margin-left: 95%;
+	width: 5%;
+	color: white;
+	font-size: 90%;
+	text-align: center;
+}
+.equipe_pokemon_div{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	width: 35%;
+	height: 100%;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+.boite_pokemon_div{
+	display: inline-block;
+	width: 65%;
+	height: 100%;
+	overflow-y: scroll;
+}
+.pokemon_div_equipe{
+	display: block;
+	height: calc(14% - 3px);
+	margin-top:1%;
+	margin-bottom:1%;
+	width: calc(96% - 6px);
+	margin-left: 2%;
+	margin-right: 2%;
+	border-color: blue;
+	border-style: solid;
+	background-color: #10b9fa;
+	border-radius: 3px;
+}
+.pokemon_div_equipe_gauche{
+	display: inline-block;
+	margin:0;
+	padding:0;
+	width: calc(32% - 20px);
+	height: 100%;
+	overflow: hidden;
+}
+.pokemon_div_equipe_droit{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: calc(68% - 20px);
+	overflow: hidden;
+}
+
+
+.triangle_droit:hover{
+	border-left-color: red;
+}
+
+.triangle_droit{
+	display : block;
+ 	height : 0;
+ 	width : 0;
+ 	margin-top: calc(100% / 6);
+ 	margin-bottom: calc(100% / 6);
+ 	border-top : 4px solid transparent;
+ 	border-bottom : 4px solid transparent;
+	border-left : 7px solid grey;
+}
+.triangle_bas:hover{
+	border-top-color: red;
+}
+.triangle_bas{
+	display : block;
+ 	height : 0;
+ 	width : 0;
+ 	margin-top: calc(100% / 6);
+ 	margin-bottom: calc(100% / 6);
+ 	border-top : 7px solid grey;
+ 	border-right : 4px solid transparent;
+ 	border-left : 4px solid transparent;
+}
+.triangle_haut:hover{
+	border-bottom-color: red;
+}
+.triangle_haut{
+	display : block;
+ 	height : 0;
+ 	width : 0;
+ 	margin-top: calc(100% / 6);
+ 	margin-bottom: calc(100% / 6);
+ 	border-right : 4px solid transparent;
+ 	border-bottom : 7px solid grey;
+ 	border-left : 4px solid transparent;
+}
+.boutons_div{
+	display: inline-block;
+	width: 20px;
+	height: 100%;
+}
+.equipe_gauche_img{
+	display: block;
+	width: 100%;
+	height: 63%;
+	text-align: center;
+}
+.equipe_gauche_img img{
+	width: auto;
+	height: 100%;
+}
+.equipe_gauche_lvl {
+	display: block;
+	height: 32%;
+	width: 100%;
+	text-align: center;
+	font-size: 75%;
+}
+.equipe_droit_nom{
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 32%;
+	width: 100%;
+	text-align: left;
+	font-size: 70%;
+}
+.equipe_droit_pv{
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 32%;
+	width: 100%;
+	text-align: left;
+	font-size: 70%;
+
+}
+.equipe_droit_numpv{
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 32%;
+	width: 100%;
+	text-align: center;
+	font-size: 70%;
+}
+.pokemon_div_boite{
+	margin: 2px;
+	position: relative;
+	overflow: hidden;
+	width: 20%;
+	height: 20%;
+	display: inline-block;
+}
+.img_div_boite{
+	display: block;
+	height: calc(100% * 3 / 6);
+	width: 100%;
+	opacity: 1;
+	text-align: center;
+}
+.img_div_boite img{
+	height: 100%;
+	width: auto;
+	max-width: 100%;
+	opacity: 1;
+}
+.name_pokemon_boite{
+	overflow: hidden;
+	display: block;
+	text-align: center;
+	height: calc(100% * 2 / 6);
+	width: 100%;
+	font-size: 70%;
+	opacity: 1;
+}
+.boite_middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+ }
+.pokemon_boite_container {
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	transition: .5s ease;
+	backface-visibility: hidden;
+}
+.boite_fleche{
+	display : inline-block;
+ 	height : 0;
+ 	width : 0;
+ 	border-top : 8px solid transparent;
+ 	border-right : 14px solid grey;
+ 	border-bottom : 8px solid transparent;
+
+}
+.boite_fleche:hover {
+	border-right : 14px solid red;
+}
+.pokemon_div_boite:hover {
+	border-color: black;
+	border-style: solid;
+	border-radius: 2px;
+	margin: 0;
+}
+.pokemon_div_boite:hover .boite_middle{
+	opacity: 1;
+}
+.pokemon_div_boite:hover .pokemon_boite_container{
+	opacity: 0.3;
+}

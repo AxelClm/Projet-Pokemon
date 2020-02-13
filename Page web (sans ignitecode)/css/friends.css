@@ -1,0 +1,105 @@
+.friends_div{
+	width: 100%;
+	height: 20%;
+	text-align: left;
+}
+.left_friends_div{
+	text-align: center;
+	margin-left: 20px;
+	display: inline-block;
+	width: calc(100% / 5);
+	height: 100%;
+}
+.right_friends_div{
+	display: inline-block;
+	width: calc(200% / 5);
+	height: 100%;
+	text-align: left;
+}
+.fight_div{
+	cursor: pointer;
+	display: inline-block;
+	width: calc(100%/5);
+	height: 100%;
+	font-size: 200%;
+}
+.fight_div:hover{
+	color: orange;
+}
+.friends_img{
+	width: 100%;
+	height: 100%;
+	font-size: 300%;
+	background: -webkit-linear-gradient(#f5f7fa, #c3cfe2);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+}
+.right_friends_div .friends_name{
+	width: 100%;
+	height: calc(100% / 3);
+	font-size: 100%;
+}
+.right_friends_div .friends_status{
+	width: 100%;
+	height: calc(100% / 3);
+	font-size: 70%;
+}
+.right_friends_div .friends_activite{
+	width: 100%;
+	height: calc(100% / 3);
+	font-size: 80%;
+}
+.offline_friends .right_friends_div .friends_status i {
+	color: red;
+}
+.online_friends .right_friends_div .friends_status i {
+	color: green;
+}
+.demande_friends{
+	width: 100%;
+	height: 10%;
+	text-align: left;
+}
+.left_demande_div{
+	margin-left: 6%;
+	display: inline-block;
+	width: calc(50% / 5);
+	height: 100%;
+}
+.demande_img{
+	height: 100%;
+	width: 100%;
+	font-size: 200%;
+}
+.middle_demande_friends{
+	display: inline-block;
+	width: calc(100% / 5);
+	height: 100%;
+	font-size: 70%;
+	text-align: left;
+}
+.right_demande_div{
+	display: inline-block;
+	width: calc(100% / 5);
+	height: 100%;
+}
+.accepter_demande{
+	cursor: pointer;
+	display: inline-block;
+	width: 50%;
+	height: 100%;
+	text-align: center;
+}
+.refuser_demande{
+	cursor: pointer;
+	display: inline-block;
+	width: 50%;
+	height: 100%;
+	text-align: center;
+}
+.accepter_demande:hover{
+	color: green;
+}
+.refuser_demande:hover{
+	color: red;
+}

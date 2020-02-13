@@ -1,0 +1,304 @@
+#img1{
+	visibility: visible;
+	position: absolute;
+	left: 129px;
+	bottom: 150px;
+	display: none;
+}
+#img2{
+	visibility: visible;
+	position: absolute;
+	left: 454px;
+	bottom: 287px;
+	display: none;
+}
+#loading{
+	display: none;
+	position: absolute;
+	top: -10px;
+	left: 0;
+	height: 66px;
+	width: auto;
+}
+.canvasctn{
+	position: absolute;
+}
+.actionctn{
+	position: absolute;
+	bottom: 35px;
+	left: 0;
+	width: 720px;
+	display: none;
+	text-align: center;
+	font-size: 1em;
+	color: white;
+}
+#Attaquer{
+	display: inline-block;
+	background-color: #af2406;
+	border-radius: 10px;
+	height: 50px;
+	width: 100px;
+	margin: 20px;
+	border-color: #841c05;
+	border-style: solid;
+	border-width: 5px;
+	box-shadow: 5px 5px 2px 0px #656565;
+	cursor: pointer;
+
+}
+#Attaquer:hover{
+	box-shadow: 5px 5px 2px 0px #3a3a3a;
+}
+#Attaquer div{
+	margin-top: 15px;
+}
+#Objet{
+	display: inline-block;
+	background-color: #e8ac19;
+	border-radius: 10px;
+	height: 50px;
+	width: 100px;
+	margin: 20px;
+	border-color: #bc8c15;
+	border-style: solid;
+	border-width: 5px;
+	box-shadow: 5px 5px 2px 0px #656565;
+	cursor: pointer;
+}
+#Objet div{
+	margin-top: 15px;
+}
+#Objet:hover{
+	box-shadow: 5px 5px 2px 0px #3a3a3a;
+}
+#Equipe{
+	display: inline-block;
+	background-color: #3ccb12;
+	border-radius: 10px;
+	height: 50px;
+	width: 100px;
+	margin: 20px;
+	border-color: #2c920e;
+	border-style: solid;
+	border-width: 5px;
+	box-shadow: 5px 5px 2px 0px #656565;
+	cursor: pointer;
+}
+#Equipe:hover{
+	box-shadow: 5px 5px 2px 0px #3a3a3a;
+}
+#Equipe div{
+	margin-top: 15px;
+}
+#Fuite{
+	display: inline-block;
+	background-color: #1885ec;
+	border-radius: 10px;
+	height: 50px;
+	width: 100px;
+	margin: 20px;
+	border-color: #0c569c;
+	border-style: solid;
+	border-width: 5px;
+	box-shadow: 5px 5px 2px 0px #656565;
+	cursor: pointer;
+	}
+#Fuite:hover{
+	box-shadow: 5px 5px 2px 0px #3a3a3a;
+}
+#Fuite div{
+	margin-top: 15px;
+}
+.pv_restant_modulable{
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	background-color : green;
+}
+.pvrestant{
+	display: inline-block;
+	width: 30%;
+	height: 31%;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+	margin-top: 7px;
+}
+.nomLvl{
+	display: inline-block;
+	max-width: 62%;
+	min-width: 62%;
+	margin : 0%
+	height: 20px;
+	font-size: 0.8em;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+#pokeBackHud{
+	display: none;
+	position: absolute;
+	bottom: 312px;
+	left: 0px;
+	height: 31px;
+	width: 211px;
+	border-radius: 0px 10px 10px 0px;
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+	background-color: white;
+
+}
+#pokeFrontHud{
+	display: none;
+	position: absolute;
+	top: 26px;
+	right: 0px;
+	height: 31px;
+	width: 211px;
+	border-radius: 10px 0px 0px 10px;
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+	background-color: white;
+
+}
+.attaquectn{
+	position: absolute;
+	bottom: 13px;
+	left: 0;
+	width: 720px;
+	display: none;
+	text-align: center;
+	font-size: 1em;
+	color: white;
+}
+.Attaque{
+	display: inline-block;
+	background-color: #af2406;
+	border-radius: 10px;
+	height: 50px;
+	width: 127px;
+	margin: 10px;
+	border-color: #841c05;
+	border-style: solid;
+	border-width: 5px;
+	box-shadow: 5px 5px 2px 0px #656565;
+	cursor: pointer;
+}
+.Attaque:hover{
+	box-shadow: 5px 5px 2px 0px #3a3a3a;
+}
+.Retour{
+	display: inline-block;
+	background-color: #1885ec;
+	border-radius: 10px;
+	height: 22px;
+	width: 29px;
+	border-color: #0c569c;
+	border-style: solid;
+	border-width: 5px;
+	box-shadow: 5px 5px 2px 0px #656565;
+	cursor: pointer;
+}
+.Retour:hover{
+	box-shadow: 5px 5px 2px 0px #3a3a3a;
+}
+.nomAttaque{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 75%;
+	text-align: center;
+}
+.PP{
+	margin: 0;
+	width: 100%;
+	height: 25%;
+	text-align: center;
+	font-size: 0.5em;
+}
+#Dialogue{
+	display: none;
+	position: absolute;
+	margin: 0;
+	width: 720px;
+	height: auto;
+	background-color: white;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 2px;
+}
+#Dialogue #text{
+	display: block;
+	height: auto;
+}
+#Dialogue #actionDialog{
+	display: block;
+	height: 25px;
+}
+#oui{
+	display: none;	
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to top, #434343, #000);
+	height: 25px;
+	width: 40px;
+	margin-bottom: 10px;
+	padding-top: 6px;
+	border-radius: 10px;
+	margin-top: 7px;
+}
+#non{
+	display: none;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to top, #434343, #000);
+	height: 25px;
+	width: 40px;
+	margin-bottom: 10px;
+	padding-top: 6px;
+	border-radius: 10px;
+	margin-top: 7px;
+}
+#Suivant{
+	display: none;
+	cursor: pointer;
+	color: white;
+	background: linear-gradient(to top, #434343, #000);
+	height: 25px;
+	width: 40px;
+	margin-bottom: 10px;
+	padding-top: 6px;
+	border-radius: 10px;
+	margin-top: 7px;
+}
+.objctn{
+	position: absolute;
+	bottom: 13px;
+	left: 0;
+	width: 720px;
+	display: none;
+	text-align: center;
+	font-size: 1em;
+	color: white;
+}
+.Objet{
+	display: inline-block;
+	border-radius: 10px;
+	height: 50px;
+	width: 127px;
+	margin: 10px;
+	border-style: solid;
+	border-width: 5px;
+	cursor: pointer;
+	background-color: #e8ac19;
+	border-color: #bc8c15;
+	box-shadow: 5px 5px 2px 0px #656565;
+}
+.Objet:hover{
+	box-shadow: 5px 5px 2px 0px #3a3a3a;
+}

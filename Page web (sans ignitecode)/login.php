@@ -1,12 +1,14 @@
 <?php
 	session_start();
 
+	include("fonctions.php");
+	
 	if (isset($_SESSION['login'])) {
 		header("location: home.php");
 		exit();
 	}
 
-	$db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+	$db = connect();
 
 	if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
 

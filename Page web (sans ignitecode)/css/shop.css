@@ -1,0 +1,55 @@
+.userMoney {
+	padding: 1%;
+	height: 5%;
+	width: 100%;
+
+	background: rgb(182,223,253);
+	background: -moz-linear-gradient(top, rgba(182,223,253,1) 0%, rgba(184,226,246,1) 49%, rgba(216,240,252,1) 50%, rgba(224,243,250,1) 100%);
+	background: -webkit-linear-gradient(top, rgba(182,223,253,1) 0%,rgba(184,226,246,1) 49%,rgba(216,240,252,1) 50%,rgba(224,243,250,1) 100%);
+	background: linear-gradient(to bottom, rgba(182,223,253,1) 0%,rgba(184,226,246,1) 49%,rgba(216,240,252,1) 50%,rgba(224,243,250,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6dffd', endColorstr='#e0f3fa',GradientType=0 );
+
+	border-bottom: solid;
+}
+
+.itemDiv {
+	height: 100%;
+	width: 100%;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+.boxItemList {
+	width: 100%;
+	height: 90%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.itemName {
+	margin-top: 30%;
+}
+
+.boxItem {
+	opacity: 1;
+	width: 130px;
+	height: 130px;
+	border: solid;
+	border-radius: 50%;
+	margin: 3%;
+	text-align: center;
+	display: inline-block;
+
+	background: rgb(255,127,4);
+	background: -moz-linear-gradient(top, rgba(255,127,4,1) 0%, rgba(255,124,0,1) 49%, rgba(255,167,61,1) 50%, rgba(255,183,107,1) 100%);
+	background: -webkit-linear-gradient(top, rgba(255,127,4,1) 0%,rgba(255,124,0,1) 49%,rgba(255,167,61,1) 50%,rgba(255,183,107,1) 100%);
+	background: linear-gradient(to bottom, rgba(255,127,4,1) 0%,rgba(255,124,0,1) 49%,rgba(255,167,61,1) 50%,rgba(255,183,107,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7f04', endColorstr='#ffb76b',GradientType=0 );
+
+	cursor: pointer;
+	transition: .5s ease;
+}
+
+.boxItem:hover {
+	opacity: 0.3;
+}

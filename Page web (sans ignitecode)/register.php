@@ -1,12 +1,12 @@
 <?php 
 	session_start();
-
+	include("fonctions.php");
 	if (isset($_SESSION['login'])) {
 		header("location: home.php");
 		exit();
 	}
 
-	$db = mysqli_connect('***REMOVED***', '***REMOVED***', '***REMOVED***', '***REMOVED***');
+	$db = connect();
 
 	if (isset($_POST['pseudo']) && isset($_POST['mdp']) && isset($_POST['confirm'])) {
 		$username = mysqli_real_escape_string($db, $_POST['pseudo']);
@@ -27,7 +27,7 @@
 			if ($password == $confirm) {
 				$password = md5($password);
 				
-				$query = "INSERT INTO users(username, password) VALUES('$username', '$password')";
+				$query = "INSERT INTO users(username, password, dateInscription) VALUES('$username', '$password', NOW())";
 				mysqli_query($db, $query);
 
 				$_SESSION['login'] = $username;
